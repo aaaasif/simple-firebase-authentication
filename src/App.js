@@ -1,3 +1,4 @@
+import {} from 'firebase/auth';
 import './App.css';
 import initializeAuthentication from './Firebase/firebase.initialize';
 
