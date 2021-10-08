@@ -1,9 +1,11 @@
-import {} from 'firebase/auth';
+import {GoogleAuthProvider} from 'firebase/auth';
 import './App.css';
 import initializeAuthentication from './Firebase/firebase.initialize';
 
 
 initializeAuthentication();
+
+const provider = new GoogleAuthProvider();
 
 function App() {
   return (
