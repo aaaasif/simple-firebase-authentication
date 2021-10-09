@@ -1,15 +1,16 @@
-import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import {getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider} from 'firebase/auth';
 import './App.css';
 import initializeAuthentication from './Firebase/firebase.initialize';
 
 
 initializeAuthentication();
 
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const provider = new GithubAuthProvider();
 
 const handleGoogleSignIn = () => {
   const auth = getAuth();
-  signInWithPopup (auth, provider)
+  signInWithPopup (auth, googleProvider)
   .then(result => {
   const user = result.user;
   console.log(user);
