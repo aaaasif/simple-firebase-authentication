@@ -61,7 +61,7 @@ function App() {
       <br />
       {
         user.name && <div>
-          <h2>Welcome {user.name}</h2>
+          <h2>Welcome {user.name  }</h2>
           <p>I know your email address: {user.email}</p>
           <img src={user.photo} alt="" />
         </div>
