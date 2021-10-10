@@ -50,6 +50,17 @@ function App() {
   }
   return (
     <div className="App">
+      <form >
+        <h3>Please Register</h3>
+        <label htmlFor="email">Email  </label>
+        <input type="text" name="email" />
+        <br />
+        <label htmlFor="password">Password  </label>
+        <input type="password" name="password" />
+        <br />
+        <input type="submit" value="Submit"/>
+
+      </form>
 
 
       <br /><br /><br />
