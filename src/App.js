@@ -51,6 +51,9 @@ function App() {
   return (
     <div className="App">
 
+
+      <br /><br /><br />
+      <div>--------------------------------------</div>
       {!user.name ?
         <div>
           <button onClick={handleGoogleSignIn}>Google Sign In</button>
