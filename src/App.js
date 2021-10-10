@@ -48,9 +48,16 @@ function App() {
         setUser({});
       })
   }
+
+
+  const handleRegistation = e => {
+    console.log('Thanks for registration');
+    e.preventDefault();
+  }
+
   return (
     <div className="App">
-      <form >
+      <form onSubmit={handleRegistation}>
         <h3>Please Register</h3>
         <label htmlFor="email">Email  </label>
         <input type="text" name="email" />
@@ -58,7 +65,7 @@ function App() {
         <label htmlFor="password">Password  </label>
         <input type="password" name="password" />
         <br />
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Register"/>
 
       </form>
 
