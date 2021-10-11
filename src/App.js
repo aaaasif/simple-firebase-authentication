@@ -10,6 +10,9 @@ const googleProvider = new GoogleAuthProvider();
 const gitHubProvider = new GithubAuthProvider();
 
 function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const [user, setUser] = useState({})
   const auth = getAuth();
 
@@ -49,6 +52,13 @@ function App() {
       })
   }
 
+  const handleEmailChange = e => {
+    setEmail(e.target.value);
+  }
+
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
+  }
 
   const handleRegistation = e => {
     console.log('Thanks for registration');
@@ -57,17 +67,18 @@ function App() {
 
   return (
     <div className="mx-5">
-      <form>
+      <form onSubmit={handleRegistation}>
+        <h3 className="text-primary">Please Registar</h3>
   <div class="row mb-3">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3"/>
+      <input onBlur={handleEmailChange} type="email" class="form-control" id="inputEmail3"/>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3"/>
+      <input onBlur={handlePasswordChange} type="password" class="form-control" id="inputPassword3"/>
     </div>
   </div>
   <div class="row mb-3">
