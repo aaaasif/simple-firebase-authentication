@@ -61,7 +61,7 @@ function App() {
   }
 
   const handleRegistation = e => {
-    console.log('Thanks for registration');
+    console.log(email, password);
     e.preventDefault();
   }
 
@@ -69,36 +69,36 @@ function App() {
     <div className="mx-5">
       <form onSubmit={handleRegistation}>
         <h3 className="text-primary">Please Registar</h3>
-  <div class="row mb-3">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input onBlur={handleEmailChange} type="email" class="form-control" id="inputEmail3"/>
+  <div className="row mb-3">
+    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+    <div className="col-sm-10">
+      <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3"/>
     </div>
   </div>
-  <div class="row mb-3">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input onBlur={handlePasswordChange} type="password" class="form-control" id="inputPassword3"/>
+  <div className="row mb-3">
+    <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
+    <div className="col-sm-10">
+      <input onBlur={handlePasswordChange} type="password" className="form-control" id="inputPassword3"/>
     </div>
   </div>
-  <div class="row mb-3">
-    <div class="col-sm-10 offset-sm-2">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1"/>
-        <label class="form-check-label" for="gridCheck1">
-          Example checkbox
+  <div className="row mb-3">
+    <div className="col-sm-10 offset-sm-2">
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" id="gridCheck1"/>
+        <label className="form-check-label" htmlFor="gridCheck1">
+          Save Password
         </label>
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" className="btn btn-primary">Sign in</button>
 </form>
 
 
       <br /><br /><br />
       <div>--------------------------------------</div>
       {!user.name ?
-        <div>
+        <div className='p-2'>
           <button onClick={handleGoogleSignIn}>Google Sign In</button>
           <button onClick={handleGithubSignIn}>Github Sign In</button>
         </div> :
@@ -106,7 +106,7 @@ function App() {
       }
       <br />
       {
-        user.name && <div>
+        user.name && <div >
           <h2>Welcome {user.name  }</h2>
           <p>I know your email address: {user.email}</p>
           <img src={user.photo} alt="" />
