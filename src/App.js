@@ -1,4 +1,4 @@
-import {getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut} from 'firebase/auth';
+import {getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut, createUserWithEmailAndPassword} from 'firebase/auth';
 import { useState } from 'react';
 import './App.css';
 import initializeAuthentication from './Firebase/firebase.initialize';
@@ -62,6 +62,11 @@ function App() {
 
   const handleRegistation = e => {
     console.log(email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    })
     e.preventDefault();
   }
 
@@ -72,13 +77,13 @@ function App() {
   <div className="row mb-3">
     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
     <div className="col-sm-10">
-      <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3"/>
+      <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3" required/>
     </div>
   </div>
   <div className="row mb-3">
     <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
     <div className="col-sm-10">
-      <input onBlur={handlePasswordChange} type="password" className="form-control" id="inputPassword3"/>
+      <input onBlur={handlePasswordChange} type="password" className="form-control" id="inputPassword3" required/>
     </div>
   </div>
   <div className="row mb-3">
@@ -91,7 +96,7 @@ function App() {
       </div>
     </div>
   </div>
-  <button type="submit" className="btn btn-primary">Sign in</button>
+  <button type="submit" className="btn btn-primary">Register</button>
 </form>
 
 
