@@ -1,4 +1,4 @@
-import {getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut, createUserWithEmailAndPassword} from 'firebase/auth';
+import {getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth';
 import { useState } from 'react';
 import './App.css';
 import initializeAuthentication from './Firebase/firebase.initialize';
@@ -13,6 +13,8 @@ function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLogin, setIsLogin] = useState(false);
+
 
   const [user, setUser] = useState({})
   const auth = getAuth();
@@ -73,7 +75,7 @@ function App() {
       return;
     }
 
-    if (islogin) {
+    if (isLogin) {
       processLogin (email, password)
     }
     else {
@@ -81,7 +83,15 @@ function App() {
     }
 
     const processLogin = (email, password) =>{
-      
+      signInWithEmailAndPassword(auth, email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        setError('');
+      })
+      .catch(error => {
+        setError(error.message);
+      })
     }
   }
   const registerNewUser = (email, password) => {
@@ -89,12 +99,19 @@ function App() {
     .then(result => {
       const user = result.user;
       console.log(user);
+      verifyEmail(''); 
     })
     .catch(error => {
       setError(error.message);
     })
   }
 
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser )
+    .then( result =>{
+      console.log(result);
+    })
+  }
   return (
     <div className="mx-5">
       <form onSubmit={handleRegistation}>
