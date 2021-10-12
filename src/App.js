@@ -72,6 +72,19 @@ function App() {
       setError('Password Must contain 2 upper case');
       return;
     }
+
+    if (islogin) {
+      processLogin (email, password)
+    }
+    else {
+      registerNewUser(email, password)
+    }
+
+    const processLogin = (email, password) =>{
+      
+    }
+  }
+  const registerNewUser = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then(result => {
       const user = result.user;
