@@ -103,16 +103,16 @@ function App() {
       <br /><br /><br />
       <div>--------------------------------------</div>
       {!user.name ?
-        <div className='p-2'>
-          <button onClick={handleGoogleSignIn}>Google Sign In</button>
-          <button onClick={handleGithubSignIn}>Github Sign In</button>
+        <div >
+          <button  className='m-2' onClick={handleGoogleSignIn}>Google Sign In</button>
+          <button  className='m-2'onClick={handleGithubSignIn}>Github Sign In</button>
         </div> :
         <button onClick={handleSignOut}>Sign Out</button>
       }
       <br />
       {
         user.name && <div >
-          <h2>Welcome {user.name  }</h2>
+          <h2>Welcome {user.name}</h2>
           <p>I know your email address: {user.email}</p>
           <img src={user.photo} alt="" />
         </div>
